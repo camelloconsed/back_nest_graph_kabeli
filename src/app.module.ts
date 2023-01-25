@@ -11,17 +11,19 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 // import {ApolloServerPluginLandingPageLocalDefault} from 'apollo-server-core'
 
 @Module({
-  imports: [IndicatorsModule, 
+  imports: [
+    IndicatorsModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
-    driver: ApolloDriver,
-    autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-    // debug: false,
-    // playground:false,
-    // plugins: [
-    //   ApolloServerPluginLandingPageLocalDefault
-    // ]
+      driver: ApolloDriver,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      // debug: false,
+      // playground:false,
+      // plugins: [
+      //   ApolloServerPluginLandingPageLocalDefault
+      // ]
     }),
-    HttpModule],
+    HttpModule,
+  ],
   controllers: [AppController, IndicatorsController],
   providers: [AppService, IndicatorsService],
 })
